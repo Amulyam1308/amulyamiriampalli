@@ -1,6 +1,6 @@
 Welcome to my professional portfolio! This repository contains the source code for my personal website showcasing my experience, skills, and projects.
 🌐 Live Website
-Visit my portfolio: https://amulyam1308.github.io
+Visit my portfolio: https://amulyam1308.github.io/amulyamiriampalli/
 👋 About Me
 I'm a passionate QA Test Engineer and Software Developer with 1.4 years of experience at Tata Consultancy Services. Currently pursuing my MCA at Symbiosis Skills & Professional University, I specialize in:
 
@@ -37,7 +37,7 @@ To run this website locally:
 
 
 Navigate to the project directory:
-bashcd amulyam1308.github.io
+bashcd https://amulyam1308.github.io/amulyamiriampalli/
 
 Open index.html in your browser or use a local server:
 bash# Using Python
