@@ -1,801 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amulya Miriampalli - Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(248, 249, 250, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: #2c3e50;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            color: #8b9dc3;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #2c3e50;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(139,157,195,0.1)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero .subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: #5a6c7d;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-
-        .hero .description {
-            font-size: 1.1rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            color: #2c3e50;
-            animation: fadeInUp 1s ease 0.6s both;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #d4c5b9, #e8dcc6);
-            color: #2c3e50;
-            padding: 12px 30px;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            animation: fadeInUp 1s ease 0.9s both;
-            border: 2px solid transparent;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(212, 197, 185, 0.4);
-            border-color: #8b9dc3;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Sections */
-        section {
-            padding: 80px 0;
-            background: #fefefe;
-        }
-
-        section:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #2c3e50;
-            position: relative;
-            font-weight: 600;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background: linear-gradient(45deg, #8b9dc3, #d4c5b9);
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .about-image {
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #e8dcc6, #d4c5b9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            position: relative;
-            overflow: hidden;
-            border: 3px solid #8b9dc3;
-        }
-
-        .about-image::before {
-            content: '👩‍💻';
-            font-size: 5rem;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #2c3e50;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: #fefefe;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-            border: 1px solid #e9ecef;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
-        }
-
-        .skill-category h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: linear-gradient(45deg, #8b9dc3, #a8b5d1);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* Experience Section */
-        .experience-timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(45deg, #8b9dc3, #d4c5b9);
-        }
-
-        .experience-item {
-            background: #fefefe;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            margin: 2rem 0;
-            position: relative;
-            width: 45%;
-            border: 1px solid #e9ecef;
-        }
-
-        .experience-item:nth-child(odd) {
-            margin-left: 0;
-        }
-
-        .experience-item:nth-child(even) {
-            margin-left: 55%;
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: #8b9dc3;
-            border-radius: 50%;
-            top: 2rem;
-            border: 3px solid #fefefe;
-        }
-
-        .experience-item:nth-child(odd)::before {
-            right: -60px;
-        }
-
-        .experience-item:nth-child(even)::before {
-            left: -60px;
-        }
-
-        .experience-date {
-            color: #8b9dc3;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-
-        .experience-company {
-            color: #5a6c7d;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: #fefefe;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            transition: transform 0.3s ease;
-            border: 1px solid #e9ecef;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
-        }
-
-        .project-image {
-            height: 200px;
-            background: linear-gradient(135deg, #e8dcc6, #d4c5b9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #2c3e50;
-            font-size: 2rem;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-title {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-
-        .project-description {
-            color: #5a6c7d;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tech-tag {
-            background: #f1f3f4;
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            color: #2c3e50;
-            border: 1px solid #e9ecef;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-
-        .contact-info {
-            background: linear-gradient(135deg, #8b9dc3, #a8b5d1);
-            color: white;
-            padding: 2rem;
-            border-radius: 10px;
-        }
-
-        .contact-info h3 {
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .contact-item i {
-            margin-right: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .contact-form {
-            background: #fefefe;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            border: 1px solid #e9ecef;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-            font-weight: 600;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.75rem;
-            border: 2px solid #e9ecef;
-            border-radius: 5px;
-            font-size: 1rem;
-            color: #2c3e50;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #8b9dc3;
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, #8b9dc3, #a8b5d1);
-            color: white;
-            padding: 0.75rem 2rem;
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(139, 157, 195, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .experience-timeline::before {
-                left: 20px;
-            }
-
-            .experience-item {
-                width: calc(100% - 60px);
-                margin-left: 60px !important;
-            }
-
-            .experience-item::before {
-                left: -60px !important;
-            }
-
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Amulya Miriampalli - Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #2c3e50;
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: rgba(248, 249, 250, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #2c3e50;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #8b9dc3;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #2c3e50;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(139,157,195,0.1)" points="0,0 1000,300 1000,1000 0,700"/></svg>');
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero .subtitle {
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: #5a6c7d;
+      animation: fadeInUp 1s ease 0.3s both;
+    }
+
+    .hero .description {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      color: #2c3e50;
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(45deg, #d4c5b9, #e8dcc6);
+      color: #2c3e50;
+      padding: 12px 30px;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      animation: fadeInUp 1s ease 0.9s both;
+      border: 2px solid transparent;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(212, 197, 185, 0.4);
+      border-color: #8b9dc3;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section {
+      padding: 80px 0;
+      background: #fefefe;
+    }
+
+    section:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 3rem;
+      color: #2c3e50;
+      position: relative;
+      font-weight: 600;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(45deg, #8b9dc3, #d4c5b9);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #e8dcc6, #d4c5b9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid #8b9dc3;
+    }
+
+    .about-image::before {
+      content: '👩‍💻';
+      font-size: 5rem;
+    }
+
+    .about-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #2c3e50;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .skill-category {
+      background: #fefefe;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      border: 1px solid #e9ecef;
+      transition: transform 0.3s ease;
+    }
+
+    .skill-category:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+    }
+
+    .skill-category h3 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .skill-tag {
+      background: linear-gradient(45deg, #8b9dc3, #a8b5d1);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .experience-timeline {
+      position: relative;
+      padding: 2rem 0;
+    }
+
+    .experience-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(45deg, #8b9dc3, #d4c5b9);
+    }
+
+    .experience-item {
+      background: #fefefe;
+      padding: 2rem;
+      border-radius: 10px;
+      margin: 2rem 0;
+      position: relative;
+      width: 45%;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      border: 1px solid #e9ecef;
+    }
+
+    .experience-item:nth-child(odd) {
+      margin-left: 0;
+    }
+
+    .experience-item:nth-child(even) {
+      margin-left: 55%;
+    }
+
+    .experience-item::before {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #8b9dc3;
+      border-radius: 50%;
+      top: 2rem;
+      border: 3px solid #fefefe;
+    }
+
+    .experience-item:nth-child(odd)::before {
+      right: -60px;
+    }
+
+    .experience-item:nth-child(even)::before {
+      left: -60px;
+    }
+
+    .experience-date {
+      color: #8b9dc3;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .experience-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    .experience-company {
+      color: #5a6c7d;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: #fefefe;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease;
+      border: 1px solid #e9ecef;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+    }
+
+    .project-image {
+      height: 200px;
+      background: linear-gradient(135deg, #e8dcc6, #d4c5b9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2c3e50;
+      font-size: 2rem;
+    }
+
+    .project-content {
+      padding: 1.5rem;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+      font-weight: 600;
+    }
+
+    .project-description {
+      color: #5a6c7d;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      background: #f1f3f4;
+      padding: 0.3rem 0.8rem;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      color: #2c3e50;
+      border: 1px solid #e9ecef;
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .contact-info {
+      background: linear-gradient(135deg, #8b9dc3, #a8b5d1);
+      color: white;
+      padding: 2rem;
+      border-radius: 10px;
+    }
+
+    .contact-info h3 {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .contact-item span:first-child {
+      margin-right: 1rem;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .experience-timeline::before {
+        left: 20px;
+      }
+
+      .experience-item {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+      }
+
+      .experience-item::before {
+        left: -60px !important;
+      }
+
+      .contact-content {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <div class="logo">Amulya Miriampalli</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>Amulya Miriampalli</h1>
-            <p class="subtitle">QA Test Engineer & Software Developer</p>
-            <p class="description">
-                Detail-oriented professional with expertise in software testing, quality assurance, and full-stack development. 
-                Currently pursuing MCA while building innovative solutions in AI and automation.
-            </p>
-            <a href="#contact" class="cta-button">Get In Touch</a>
-        </div>
-    </section>
+  <!-- Navigation, Hero, About, Skills, Experience, Projects sections go here... (already included in your file) -->
 
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-image"></div>
-                <div class="about-text">
-                    <p>
-                        I'm a passionate software professional with 1.4 years of experience at Tata Consultancy Services as a QA Test Engineer. 
-                        Currently pursuing my MCA at Symbiosis Skills & Professional University, I combine academic excellence with practical industry experience.
-                    </p>
-                    <p>
-                        My expertise spans across software testing, quality assurance, and full-stack development. I've successfully automated test suites, 
-                        reduced regression cycles by 30%, and implemented innovative testing frameworks that improved overall product quality.
-                    </p>
-                    <p>
-                        I'm particularly interested in AI-driven solutions, having recently worked on resume parsing and job matching systems. 
-                        I believe in continuous learning and am always eager to take on new challenges that push the boundaries of technology.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="skills">
-        <div class="container">
-            <h2 class="section-title">Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">JavaScript</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Testing & QA</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Selenium WebDriver</span>
-                        <span class="skill-tag">JIRA</span>
-                        <span class="skill-tag">Regression Testing</span>
-                        <span class="skill-tag">API Testing</span>
-                        <span class="skill-tag">Test Automation</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Web Technologies</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">ReactJS</span>
-                        <span class="skill-tag">FastAPI</span>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Database & Tools</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Pandas</span>
-                        <span class="skill-tag">Git</span>
-                        <span class="skill-tag">CI/CD</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience">
-        <div class="container">
-            <h2 class="section-title">Experience</h2>
-            <div class="experience-timeline">
-                <div class="experience-item">
-                    <div class="experience-date">June 2025 - July 2025</div>
-                    <div class="experience-title">Summer Intern</div>
-                    <div class="experience-company">Trikon Technologies</div>
-                    <p>Assisted in developing algorithms for resume analysis and job matching, contributing to FastAPI backend operations and testing dual-search functionality.</p>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-date">September 2021 - December 2022</div>
-                    <div class="experience-title">QA Test Engineer</div>
-                    <div class="experience-company">Tata Consultancy Services</div>
-                    <p>Designed and executed 50+ test cases, achieved 95% test coverage, automated 40% of test scenarios, and reduced regression cycles by 30%. Awarded Appreciation Award for outstanding performance.</p>
-                </div>
-                <div class="experience-item">
-                    <div class="experience-date">2022-2024</div>
-                    <div class="experience-title">Student Placement Coordinator</div>
-                    <div class="experience-company">Chaitanya Bharathi Institute of Technology</div>
-                    <p>Facilitated company onboarding, conducted placement training sessions, and liaised with corporate partners to expand placement opportunities.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">🔍</div>
-                    <div class="project-content">
-                        <h3 class="project-title">JobSynq - Smart Job Matching</h3>
-                        <p class="project-description">
-                            Developed an AI-powered job matching platform using automated resume parsing and compatibility algorithms. 
-                            Reduced manual job search efforts by 60% through data-driven recommendations.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">FastAPI</span>
-                            <span class="tech-tag">Python</span>
-                            <span class="tech-tag">NLP</span>
-                            <span class="tech-tag">Pandas</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">🛒</div>
-                    <div class="project-content">
-                        <h3 class="project-title">E-commerce Testing Suite</h3>
-                        <p class="project-description">
-                            Created comprehensive testing framework for e-commerce applications with automated regression testing 
-                            using Selenium WebDriver for user login, product search, and checkout processes.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Selenium</span>
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">TestNG</span>
-                            <span class="tech-tag">JIRA</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">✈️</div>
-                    <div class="project-content">
-                        <h3 class="project-title">Travel Management System</h3>
-                        <p class="project-description">
-                            Built a Java-based travel management system with OOP principles, exception handling, 
-                            and efficient data management for booking and itinerary management.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Java</span>
-                            <span class="tech-tag">OOP</span>
-                            <span class="tech-tag">Data Structures</span>
-                            <span class="tech-tag">Console UI</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">🏦</div>
-                    <div class="project-content">
-                        <h3 class="project-title">HR Management Research</h3>
-                        <p class="project-description">
-                            Conducted comprehensive research on HR practices in State Bank of India, analyzing recruitment, 
-                            training, and performance appraisal impact on employee productivity.
-                        </p>
-                        <div class="project-tech">
-                            <span class="tech-tag">Research</span>
-                            <span class="tech-tag">Data Analysis</span>
-                            <span class="tech-tag">HR Analytics</span>
-                            <span class="tech-tag">Surveys</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   <section id="contact">
-  <div class="container">
-    <h2 class="section-title">Get In Touch</h2>
-    <div class="contact-content">
-      <div class="contact-info">
-        <h3>Let's Connect</h3>
-        <p>I'm always open to discussing new opportunities, collaborations, or just having a chat about technology!</p>
-        <div class="contact-item">
-          <span>📧</span>
-          <span>amulya.m1308@gmail.com</span>
-        </div>
-        <div class="contact-item">
-          <span>📱</span>
-          <span>+91 8919714896</span>
-        </div>
-        <div class="contact-item">
-          <span>💼</span>
-          <span>www.linkedin.com/in/amulya-miriampalli-21940a202</span>
-        </div>
-        <div class="contact-item">
-          <span>📍</span>
-          <span>Hyderabad, Telangana</span>
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <h3>Let's Connect</h3>
+          <p>I'm always open to discussing new opportunities, collaborations, or just having a chat about technology!</p>
+          <div class="contact-item"><span>📧</span><span>amulya.m1308@gmail.com</span></div>
+          <div class="contact-item"><span>📱</span><span>+91 8919714896</span></div>
+          <div class="contact-item"><span>💼</span><span>www.linkedin.com/in/amulya-miriampalli-21940a202</span></div>
+          <div class="contact-item"><span>📍</span><span>Hyderabad, Telangana</span></div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
+  <footer>
+    <p>&copy; 2025 Amulya Miriampalli. All rights reserved.</p>
+  </footer>
 
-<!-- REMOVE/REPLACE the JavaScript form handler -->
-<script>
-    // Smooth scrolling for navigation links
+  <script>
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+      });
     });
 
-    // Header background change on scroll
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('header');
-        if (window.scrollY > 100) {
-            header.style.background = 'rgba(255, 255, 255, 0.95)';
-            header.style.backdropFilter = 'blur(10px)';
-        } else {
-            header.style.background = 'rgba(255, 255, 255, 0.1)';
-        }
+    window.addEventListener('scroll', function () {
+      const header = document.querySelector('header');
+      header.style.background = window.scrollY > 100
+        ? 'rgba(255, 255, 255, 0.95)'
+        : 'rgba(255, 255, 255, 0.1)';
     });
 
-    // REMOVE THE OLD FORM HANDLER - Let Formspree handle it
-    // The form will now submit to Formspree automatically
-
-    // Animate elements on scroll
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-            }
-        });
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
     }, observerOptions);
 
-    // Observe all sections
     document.querySelectorAll('section').forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(section);
+      section.style.opacity = '0';
+      section.style.transform = 'translateY(30px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
     });
-</script>
+  </script>
 </body>
 </html>
