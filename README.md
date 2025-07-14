@@ -1,6 +1,6 @@
 Welcome to my professional portfolio! This repository contains the source code for my personal website showcasing my experience, skills, and projects.
 🌐 Live Website
-Visit my portfolio: https://your-username.github.io
+Visit my portfolio: https://amulyam1308.github.io
 👋 About Me
 I'm a passionate QA Test Engineer and Software Developer with 1.4 years of experience at Tata Consultancy Services. Currently pursuing my MCA at Symbiosis Skills & Professional University, I specialize in:
 
@@ -35,11 +35,9 @@ portfolio/
 🔧 Local Development
 To run this website locally:
 
-Clone the repository:
-bashgit clone https://github.com/your-username/your-username.github.io.git
 
 Navigate to the project directory:
-bashcd your-username.github.io
+bashcd amulyam1308.github.io
 
 Open index.html in your browser or use a local server:
 bash# Using Python
@@ -91,15 +89,6 @@ Tools: Git, CI/CD, Version Control
 Email: amulya.m1308@gmail.com
 Phone: +91 8919714896
 Location: Hyderabad, Telangana
-LinkedIn: Your LinkedIn Profile
-
-🔄 Updates & Maintenance
-This portfolio is regularly updated with:
-
-New projects and achievements
-Updated skills and technologies
-Fresh work experience
-Enhanced features and design improvements
 
 📝 License
 This project is open source and available under the MIT License.
